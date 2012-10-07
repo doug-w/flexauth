@@ -19,6 +19,7 @@
 		1393F0A816212202001C9EA7 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1393F0A616212202001C9EA7 /* MainStoryboard_iPhone.storyboard */; };
 		1393F0AB16212202001C9EA7 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1393F0A916212202001C9EA7 /* MainStoryboard_iPad.storyboard */; };
 		1393F0AE16212202001C9EA7 /* FlexAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1393F0AD16212202001C9EA7 /* FlexAuthViewController.m */; };
+		1393F0BC162124F4001C9EA7 /* FlexAuthTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1393F0BB162124F4001C9EA7 /* FlexAuthTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		1393F0AA16212202001C9EA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		1393F0AC16212202001C9EA7 /* FlexAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlexAuthViewController.h; sourceTree = "<group>"; };
 		1393F0AD16212202001C9EA7 /* FlexAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlexAuthViewController.m; sourceTree = "<group>"; };
+		1393F0BA162124F4001C9EA7 /* FlexAuthTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexAuthTableViewController.h; sourceTree = "<group>"; };
+		1393F0BB162124F4001C9EA7 /* FlexAuthTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexAuthTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				1393F09D16212202001C9EA7 /* FlexAuthAppDelegate.h */,
 				1393F09E16212202001C9EA7 /* FlexAuthAppDelegate.m */,
 				1393F0A616212202001C9EA7 /* MainStoryboard_iPhone.storyboard */,
+				1393F0BA162124F4001C9EA7 /* FlexAuthTableViewController.h */,
+				1393F0BB162124F4001C9EA7 /* FlexAuthTableViewController.m */,
 				1393F0A916212202001C9EA7 /* MainStoryboard_iPad.storyboard */,
 				1393F0AC16212202001C9EA7 /* FlexAuthViewController.h */,
 				1393F0AD16212202001C9EA7 /* FlexAuthViewController.m */,
@@ -181,6 +186,7 @@
 				1393F09B16212202001C9EA7 /* main.m in Sources */,
 				1393F09F16212202001C9EA7 /* FlexAuthAppDelegate.m in Sources */,
 				1393F0AE16212202001C9EA7 /* FlexAuthViewController.m in Sources */,
+				1393F0BC162124F4001C9EA7 /* FlexAuthTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
