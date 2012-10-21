@@ -8,6 +8,10 @@
 
 #import "FlexAuthTableViewController.h"
 
+// Move to crypto
+#import "NSData+HexString.h"
+#import "CommonCrypto/CommonHMAC.h"
+
 @interface FlexAuthTableViewController ()
 @property NSDictionary* model;
 
@@ -79,10 +83,9 @@
     // Configure the cell...
     cell.textLabel.text = [rowData objectForKey:@"label"];
     
-    NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
-    int randomNumber = fmod(currentTime, 1000000000.0);
+    NSString* password = [self getPassword];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",randomNumber];
+    cell.detailTextLabel.text = password;
     return cell;
 }
 
@@ -119,5 +122,62 @@
     }
     
     self.previousPercentValue = percentProgress;
+}
+
+- (uint64_t)currentTimeMilliSec
+{
+    NSTimeInterval currentTimeMilliSec = [[NSDate date] timeIntervalSince1970] * 1000;
+    uint64_t time = currentTimeMilliSec / 30000L;
+    
+    time = 44987614;
+    
+    time_t test;
+    NSLog(@"This is a test %lu", sizeof(test));
+    
+    return time;
+}
+
+- (NSString*) getPassword
+{
+    // TODO: DJW Move this to a model class
+    // Model listens to the timestamp
+    // Model throws an event when it's time to change
+    // View Controller listens to the event and notifies the view
+    
+    
+    // TODO: DJW oblit this in git history
+    NSString* secret = @"f46a0ab66c12e7030de53a0497b954dc8b9f25d9";
+
+    uint64_t time = [self currentTimeMilliSec];
+    
+    // For simulator testing
+    time = CFSwapInt64HostToBig(time);
+    
+    NSData* data = [NSData dataWithBytes:&time length:sizeof(time)];
+    
+    NSData* key = [NSData dataWithHexString:secret];
+    char macOut[CC_SHA1_DIGEST_LENGTH];
+    
+    CCHmac( kCCHmacAlgSHA1, [key bytes], [key length], [data bytes], [data length], &macOut );
+
+	NSData* mac = [NSData dataWithBytes:macOut length:CC_SHA1_DIGEST_LENGTH];
+    
+    unsigned char source;
+    NSRange sourceRange = {19, 1};
+    [mac getBytes:&source range:sourceRange];
+    source = source & 0x0F;
+    
+    NSRange authRange = {(int)source, 4};
+    
+    int auth;
+    [mac getBytes:&auth range:authRange];
+    auth = CFSwapInt32BigToHost(auth);
+    
+    int code = auth & 0x7FFFFFFF;
+    
+    double modulo = pow(10.0, 8.0);
+    code = (int)fmod((double)code, modulo);
+    
+    return [NSString stringWithFormat:@"%08d", code];
 }
 @end

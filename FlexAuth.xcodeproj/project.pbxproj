@@ -20,6 +20,7 @@
 		1393F0AB16212202001C9EA7 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1393F0A916212202001C9EA7 /* MainStoryboard_iPad.storyboard */; };
 		1393F0AE16212202001C9EA7 /* FlexAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1393F0AD16212202001C9EA7 /* FlexAuthViewController.m */; };
 		1393F0BC162124F4001C9EA7 /* FlexAuthTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1393F0BB162124F4001C9EA7 /* FlexAuthTableViewController.m */; };
+		1393F0C31621DF3F001C9EA7 /* NSData+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 1393F0C21621DF3F001C9EA7 /* NSData+HexString.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		1393F0AD16212202001C9EA7 /* FlexAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlexAuthViewController.m; sourceTree = "<group>"; };
 		1393F0BA162124F4001C9EA7 /* FlexAuthTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexAuthTableViewController.h; sourceTree = "<group>"; };
 		1393F0BB162124F4001C9EA7 /* FlexAuthTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexAuthTableViewController.m; sourceTree = "<group>"; };
+		1393F0C11621DF3F001C9EA7 /* NSData+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+HexString.h"; sourceTree = "<group>"; };
+		1393F0C21621DF3F001C9EA7 /* NSData+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HexString.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				1393F0AC16212202001C9EA7 /* FlexAuthViewController.h */,
 				1393F0AD16212202001C9EA7 /* FlexAuthViewController.m */,
 				1393F09516212202001C9EA7 /* Supporting Files */,
+				1393F0C11621DF3F001C9EA7 /* NSData+HexString.h */,
+				1393F0C21621DF3F001C9EA7 /* NSData+HexString.m */,
 			);
 			path = FlexAuth;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				1393F09F16212202001C9EA7 /* FlexAuthAppDelegate.m in Sources */,
 				1393F0AE16212202001C9EA7 /* FlexAuthViewController.m in Sources */,
 				1393F0BC162124F4001C9EA7 /* FlexAuthTableViewController.m in Sources */,
+				1393F0C31621DF3F001C9EA7 /* NSData+HexString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +319,7 @@
 				1393F0B316212202001C9EA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
