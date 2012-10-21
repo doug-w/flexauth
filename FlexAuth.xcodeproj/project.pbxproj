@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		138C457D1634417C0058480E /* FlexAuthTimeSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 138C457C1634417C0058480E /* FlexAuthTimeSync.m */; };
+		138C458B163451260058480E /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 138C457E163451260058480E /* background.jpg */; };
+		138C458C163451260058480E /* disk.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C457F163451260058480E /* disk.png */; };
+		138C458D163451260058480E /* gpg.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4580163451260058480E /* gpg.png */; };
+		138C458E163451260058480E /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4581163451260058480E /* key.png */; };
+		138C458F163451260058480E /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4582163451260058480E /* lock.png */; };
+		138C4590163451260058480E /* patch.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4583163451260058480E /* patch.9.png */; };
+		138C4591163451260058480E /* pencil_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4584163451260058480E /* pencil_add.png */; };
+		138C4592163451260058480E /* rowicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4585163451260058480E /* rowicon.png */; };
+		138C4593163451260058480E /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4586163451260058480E /* shield.png */; };
+		138C4594163451260058480E /* shocked.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4587163451260058480E /* shocked.png */; };
+		138C4595163451260058480E /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4588163451260058480E /* star.png */; };
+		138C4596163451260058480E /* widgetbg.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C4589163451260058480E /* widgetbg.9.png */; };
+		138C4597163451260058480E /* world_link.png in Resources */ = {isa = PBXBuildFile; fileRef = 138C458A163451260058480E /* world_link.png */; };
 		1393F08F16212202001C9EA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393F08E16212202001C9EA7 /* UIKit.framework */; };
 		1393F09116212202001C9EA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393F09016212202001C9EA7 /* Foundation.framework */; };
 		1393F09316212202001C9EA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393F09216212202001C9EA7 /* CoreGraphics.framework */; };
@@ -27,6 +40,19 @@
 /* Begin PBXFileReference section */
 		138C457B1634417C0058480E /* FlexAuthTimeSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexAuthTimeSync.h; sourceTree = "<group>"; };
 		138C457C1634417C0058480E /* FlexAuthTimeSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexAuthTimeSync.m; sourceTree = "<group>"; };
+		138C457E163451260058480E /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		138C457F163451260058480E /* disk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disk.png; sourceTree = "<group>"; };
+		138C4580163451260058480E /* gpg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gpg.png; sourceTree = "<group>"; };
+		138C4581163451260058480E /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
+		138C4582163451260058480E /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		138C4583163451260058480E /* patch.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patch.9.png; sourceTree = "<group>"; };
+		138C4584163451260058480E /* pencil_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil_add.png; sourceTree = "<group>"; };
+		138C4585163451260058480E /* rowicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowicon.png; sourceTree = "<group>"; };
+		138C4586163451260058480E /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
+		138C4587163451260058480E /* shocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shocked.png; sourceTree = "<group>"; };
+		138C4588163451260058480E /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		138C4589163451260058480E /* widgetbg.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = widgetbg.9.png; sourceTree = "<group>"; };
+		138C458A163451260058480E /* world_link.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_link.png; sourceTree = "<group>"; };
 		1393F08A16212202001C9EA7 /* FlexAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1393F08E16212202001C9EA7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1393F09016212202001C9EA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -114,6 +140,19 @@
 		1393F09516212202001C9EA7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				138C457E163451260058480E /* background.jpg */,
+				138C457F163451260058480E /* disk.png */,
+				138C4580163451260058480E /* gpg.png */,
+				138C4581163451260058480E /* key.png */,
+				138C4582163451260058480E /* lock.png */,
+				138C4583163451260058480E /* patch.9.png */,
+				138C4584163451260058480E /* pencil_add.png */,
+				138C4585163451260058480E /* rowicon.png */,
+				138C4586163451260058480E /* shield.png */,
+				138C4587163451260058480E /* shocked.png */,
+				138C4588163451260058480E /* star.png */,
+				138C4589163451260058480E /* widgetbg.9.png */,
+				138C458A163451260058480E /* world_link.png */,
 				1393F09616212202001C9EA7 /* FlexAuth-Info.plist */,
 				1393F09716212202001C9EA7 /* InfoPlist.strings */,
 				1393F09A16212202001C9EA7 /* main.m */,
@@ -183,6 +222,19 @@
 				1393F0A516212202001C9EA7 /* Default-568h@2x.png in Resources */,
 				1393F0A816212202001C9EA7 /* MainStoryboard_iPhone.storyboard in Resources */,
 				1393F0AB16212202001C9EA7 /* MainStoryboard_iPad.storyboard in Resources */,
+				138C458B163451260058480E /* background.jpg in Resources */,
+				138C458C163451260058480E /* disk.png in Resources */,
+				138C458D163451260058480E /* gpg.png in Resources */,
+				138C458E163451260058480E /* key.png in Resources */,
+				138C458F163451260058480E /* lock.png in Resources */,
+				138C4590163451260058480E /* patch.9.png in Resources */,
+				138C4591163451260058480E /* pencil_add.png in Resources */,
+				138C4592163451260058480E /* rowicon.png in Resources */,
+				138C4593163451260058480E /* shield.png in Resources */,
+				138C4594163451260058480E /* shocked.png in Resources */,
+				138C4595163451260058480E /* star.png in Resources */,
+				138C4596163451260058480E /* widgetbg.9.png in Resources */,
+				138C4597163451260058480E /* world_link.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

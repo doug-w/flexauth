@@ -14,6 +14,9 @@
 #import "CommonCrypto/CommonHMAC.h"
 
 @interface FlexAuthTableViewController ()
+
+- (NSTimeInterval)currentTimeMilliSec;
+
 @property NSDictionary* model;
 
 @property IBOutlet UIProgressView* timerView;
@@ -41,6 +44,11 @@
 {
     [super viewDidLoad];
 
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
+    [tempImageView setFrame:self.tableView.frame];
+    
+    self.tableView.backgroundView = tempImageView;
+    
     self.userDefaults = [NSUserDefaults standardUserDefaults];
 
     // Load time from the user defaults
@@ -64,9 +72,13 @@
     
     if([tokenRows count] == 0)
     {
-        NSDictionary *defaultData = [NSDictionary dictionaryWithObject:@"Hi"
-                                                                forKey:@"label"];
-        [self.userDefaults setObject:[NSArray arrayWithObject:defaultData]
+        // TODO: DJW oblit this in git history
+        NSDictionary *defaultRow = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"Hi", @"label",
+                                        @"f46a0ab66c12e7030de53a0497b954dc8b9f25d9", @"secret",
+                                        nil
+                                     ];
+        [self.userDefaults setObject:[NSArray arrayWithObject:defaultRow]
                               forKey:@"rows"];
         [self.userDefaults synchronize];
     }
@@ -78,6 +90,7 @@
                                                          selector:@selector(updateTimerView)
                                                          userInfo:nil
                                                           repeats:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,11 +117,17 @@
     NSDictionary* rowData = [tokenRows objectAtIndex:indexPath.row];
     
     // Configure the cell...
-    cell.textLabel.text = [rowData objectForKey:@"label"];
+    cell.backgroundColor = [UIColor blackColor];
     
-    NSString* password = [self getPassword];
+    cell.textLabel.text = [rowData objectForKey:@"label"];
+    [cell.textLabel setTextColor:[UIColor whiteColor]];
+    
+    cell.imageView.image = [UIImage imageNamed:@"gpg.png"];
+    
+    NSString* password = [self getPasswordForSecret:[rowData objectForKey:@"secret"]];
     
     cell.detailTextLabel.text = password;
+    [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
     return cell;
 }
 
@@ -131,46 +150,41 @@
 - (void) updateTimerView
 {
 
-    NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
-    double percentProgress = fmod(currentTime, 30.0);
-    percentProgress = percentProgress / 30.0;
+    NSTimeInterval currentTime = [self currentTimeMilliSec];
+    double percentProgress = fmod(currentTime, 30000.0);
+    percentProgress = percentProgress / 30000.0;
     
     // NSLog(@"Setting timer to %f", (float)percentProgress);
     
     [self.timerView setProgress:percentProgress];
     
-    if(self.previousPercentValue > percentProgress)
-    {
+    if (self.previousPercentValue > percentProgress) {
         [self.tableView reloadData];
     }
+
     
     self.previousPercentValue = percentProgress;
 }
 
-- (uint64_t)currentTimeMilliSec
+- (NSTimeInterval)currentTimeMilliSec
 {
     NSTimeInterval currentTimeMilliSec = [[NSDate date] timeIntervalSince1970]*1000;
     currentTimeMilliSec += [self.timeOffset doubleValue];
-    uint64_t time = currentTimeMilliSec / 30000L ;
     
     // time = 44987614;
     
-    return time;
+    return currentTimeMilliSec;
 }
 
-- (NSString*) getPassword
+- (NSString*) getPasswordForSecret:(NSString*)secret
 {
     // TODO: DJW Move this to a model class
     // Model listens to the timestamp
     // Model throws an event when it's time to change
     // View Controller listens to the event and notifies the view
-    
-    
-    // TODO: DJW oblit this in git history
-    NSString* secret = @"f46a0ab66c12e7030de53a0497b954dc8b9f25d9";
+        
+    uint64_t time = [self currentTimeMilliSec] / 30000L;
 
-    uint64_t time = [self currentTimeMilliSec];
-    
     // For simulator testing
     time = CFSwapInt64HostToBig(time);
     
