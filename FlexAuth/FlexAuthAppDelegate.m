@@ -7,12 +7,13 @@
 //
 
 #import "FlexAuthAppDelegate.h"
+#import "FlexAuthTimeSync.h"
 
 @implementation FlexAuthAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[FlexAuthTimeSync sharedService] startTimeSync];
     return YES;
 }
 							

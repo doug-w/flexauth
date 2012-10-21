@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		138C457D1634417C0058480E /* FlexAuthTimeSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 138C457C1634417C0058480E /* FlexAuthTimeSync.m */; };
 		1393F08F16212202001C9EA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393F08E16212202001C9EA7 /* UIKit.framework */; };
 		1393F09116212202001C9EA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393F09016212202001C9EA7 /* Foundation.framework */; };
 		1393F09316212202001C9EA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1393F09216212202001C9EA7 /* CoreGraphics.framework */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		138C457B1634417C0058480E /* FlexAuthTimeSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexAuthTimeSync.h; sourceTree = "<group>"; };
+		138C457C1634417C0058480E /* FlexAuthTimeSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexAuthTimeSync.m; sourceTree = "<group>"; };
 		1393F08A16212202001C9EA7 /* FlexAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1393F08E16212202001C9EA7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1393F09016212202001C9EA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -102,6 +105,8 @@
 				1393F09516212202001C9EA7 /* Supporting Files */,
 				1393F0C11621DF3F001C9EA7 /* NSData+HexString.h */,
 				1393F0C21621DF3F001C9EA7 /* NSData+HexString.m */,
+				138C457B1634417C0058480E /* FlexAuthTimeSync.h */,
+				138C457C1634417C0058480E /* FlexAuthTimeSync.m */,
 			);
 			path = FlexAuth;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				1393F0AE16212202001C9EA7 /* FlexAuthViewController.m in Sources */,
 				1393F0BC162124F4001C9EA7 /* FlexAuthTableViewController.m in Sources */,
 				1393F0C31621DF3F001C9EA7 /* NSData+HexString.m in Sources */,
+				138C457D1634417C0058480E /* FlexAuthTimeSync.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

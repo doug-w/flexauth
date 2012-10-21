@@ -7,6 +7,7 @@
 //
 
 #import "FlexAuthTableViewController.h"
+#import "FlexAuthTimeSync.h"
 
 // Move to crypto
 #import "NSData+HexString.h"
@@ -16,6 +17,8 @@
 @property NSDictionary* model;
 
 @property IBOutlet UIProgressView* timerView;
+
+@property (nonatomic, copy)NSNumber* timeOffset;
 
 @property NSTimer* stopWatchTimer;
 @property float previousPercentValue;
@@ -39,12 +42,32 @@
     [super viewDidLoad];
 
     self.userDefaults = [NSUserDefaults standardUserDefaults];
+
+    // Load time from the user defaults
+    self.timeOffset = [self.userDefaults objectForKey:@"offset"];
+    
+    // If the time service has come back load time from there
+    if ([FlexAuthTimeSync sharedService].receivedTime == YES) {
+        self.timeOffset = [FlexAuthTimeSync sharedService].timeOffset;
+        [self.userDefaults setObject:self.timeOffset
+                              forKey:@"offset"];
+        [self.userDefaults synchronize];
+    } else {
+        // Otherwise use the time we had last time but wait for the new time to come in
+        [[FlexAuthTimeSync sharedService] addObserver:self
+                                           forKeyPath:@"timeOffset"
+                                              options:NSKeyValueObservingOptionNew
+                                              context:nil];
+    }
+    
     NSArray* tokenRows = [self.userDefaults objectForKey:@"rows"];
     
     if([tokenRows count] == 0)
     {
-        NSDictionary *defaultData = [NSDictionary dictionaryWithObject:@"Hi" forKey:@"label"];
-        [self.userDefaults setObject:[NSArray arrayWithObject:defaultData] forKey:@"rows"];
+        NSDictionary *defaultData = [NSDictionary dictionaryWithObject:@"Hi"
+                                                                forKey:@"label"];
+        [self.userDefaults setObject:[NSArray arrayWithObject:defaultData]
+                              forKey:@"rows"];
         [self.userDefaults synchronize];
     }
 
@@ -126,13 +149,11 @@
 
 - (uint64_t)currentTimeMilliSec
 {
-    NSTimeInterval currentTimeMilliSec = [[NSDate date] timeIntervalSince1970] * 1000;
-    uint64_t time = currentTimeMilliSec / 30000L;
+    NSTimeInterval currentTimeMilliSec = [[NSDate date] timeIntervalSince1970]*1000;
+    currentTimeMilliSec += [self.timeOffset doubleValue];
+    uint64_t time = currentTimeMilliSec / 30000L ;
     
-    time = 44987614;
-    
-    time_t test;
-    NSLog(@"This is a test %lu", sizeof(test));
+    // time = 44987614;
     
     return time;
 }
@@ -180,4 +201,22 @@
     
     return [NSString stringWithFormat:@"%08d", code];
 }
+
+#pragma mark - KVO
+
+- (void) observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
+{
+    if ([keyPath isEqual:@"timeOffset"]) {
+        self.timeOffset = [change objectForKey:NSKeyValueChangeNewKey];
+        [self.tableView reloadData];
+        [self updateTimerView];
+
+        [[FlexAuthTimeSync sharedService] removeObserver:self forKeyPath:@"timeOffset"];
+        
+        [self.userDefaults setObject:self.timeOffset
+                              forKey:@"offset"];
+        [self.userDefaults synchronize];
+    }
+}
+
 @end
