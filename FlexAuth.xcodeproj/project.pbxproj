@@ -36,6 +36,7 @@
 		1393F0BC162124F4001C9EA7 /* FlexAuthTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1393F0BB162124F4001C9EA7 /* FlexAuthTableViewController.m */; };
 		1393F0C31621DF3F001C9EA7 /* NSData+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 1393F0C21621DF3F001C9EA7 /* NSData+HexString.m */; };
 		139882E3163C344800CA8C82 /* FlexAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 139882E2163C344800CA8C82 /* FlexAuthModel.m */; };
+		139882E7163C4B7D00CA8C82 /* FlexAuthAddTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139882E6163C4B7D00CA8C82 /* FlexAuthAddTokenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,8 @@
 		1393F0C21621DF3F001C9EA7 /* NSData+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HexString.m"; sourceTree = "<group>"; };
 		139882E1163C344800CA8C82 /* FlexAuthModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexAuthModel.h; sourceTree = "<group>"; };
 		139882E2163C344800CA8C82 /* FlexAuthModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexAuthModel.m; sourceTree = "<group>"; };
+		139882E5163C4B7D00CA8C82 /* FlexAuthAddTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexAuthAddTokenViewController.h; sourceTree = "<group>"; };
+		139882E6163C4B7D00CA8C82 /* FlexAuthAddTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexAuthAddTokenViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 				1393F09D16212202001C9EA7 /* FlexAuthAppDelegate.h */,
 				1393F09E16212202001C9EA7 /* FlexAuthAppDelegate.m */,
 				1393F0A616212202001C9EA7 /* MainStoryboard_iPhone.storyboard */,
+				139882E5163C4B7D00CA8C82 /* FlexAuthAddTokenViewController.h */,
+				139882E6163C4B7D00CA8C82 /* FlexAuthAddTokenViewController.m */,
 				1393F0BA162124F4001C9EA7 /* FlexAuthTableViewController.h */,
 				1393F0BB162124F4001C9EA7 /* FlexAuthTableViewController.m */,
 				1393F0A916212202001C9EA7 /* MainStoryboard_iPad.storyboard */,
@@ -257,6 +262,7 @@
 				1393F0C31621DF3F001C9EA7 /* NSData+HexString.m in Sources */,
 				138C457D1634417C0058480E /* FlexAuthTimeSync.m in Sources */,
 				139882E3163C344800CA8C82 /* FlexAuthModel.m in Sources */,
+				139882E7163C4B7D00CA8C82 /* FlexAuthAddTokenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
