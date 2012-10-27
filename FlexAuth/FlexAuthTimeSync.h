@@ -15,4 +15,5 @@
 + (FlexAuthTimeSync*) sharedService;
 
 -(void) startTimeSync;
+- (NSTimeInterval)currentTimeMilliSec;
 @end

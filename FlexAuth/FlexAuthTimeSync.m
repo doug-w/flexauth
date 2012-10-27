@@ -35,6 +35,11 @@
     self = [super init];
     if (self) {
         _receivedTime = NO;
+        
+        // Load time from the user defaults
+        NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+        
+        _timeOffset = [userDefaults objectForKey:@"offset"];
     }
     
     return self;
@@ -57,8 +62,24 @@
         
         NSTimeInterval delta = blizzardTime - [[NSDate date] timeIntervalSince1970]*1000;
         NSLog(@"Delta is %lf", delta);
-        self.timeOffset = [NSNumber numberWithDouble:delta];
+        _timeOffset = [NSNumber numberWithDouble:delta];
         _receivedTime = YES;
+        
+        // Persist it to our user settings
+        NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:self.timeOffset
+                         forKey:@"offset"];
+        [userDefaults synchronize];
     }
+}
+
+- (NSTimeInterval)currentTimeMilliSec
+{
+    NSTimeInterval currentTimeMilliSec = [[NSDate date] timeIntervalSince1970]*1000;
+    currentTimeMilliSec += [self.timeOffset doubleValue];
+    
+    // time = 44987614;
+    
+    return currentTimeMilliSec;
 }
 @end
