@@ -107,6 +107,11 @@
 
 -(NSDictionary*) _rowForLabel:(NSString*)label
 {
+    for(NSDictionary* dict in self.tokenRows) {
+        if ([[dict objectForKey:@"label"] isEqualToString:label]) {
+            return dict;
+        }
+    }
     return nil;
 }
 @end
