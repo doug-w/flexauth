@@ -7,8 +7,29 @@
 //
 
 #import "FlexAuthAddTokenViewController.h"
+#import "FlexAuthModel.h"
 
 @interface FlexAuthAddTokenViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *accountNameField;
+@property (weak, nonatomic) IBOutlet UILabel *tokenLabel;
+@property (weak, nonatomic) IBOutlet UIButton *requestTokenButton;
+@property (weak, nonatomic) IBOutlet UIButton *enterTokenButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *serialLabel;
+@property (weak, nonatomic) IBOutlet UITextField *serialField;
+@property (weak, nonatomic) IBOutlet UILabel *secretLabel;
+@property (weak, nonatomic) IBOutlet UITextField *secretField;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+
+- (IBAction)requestNewToken:(id)sender;
+- (IBAction)enterTokenManually:(id)sender;
+- (IBAction)saveToken:(id)sender;
+- (IBAction)backGroundTap:(id) sender;
+
+- (void)displayTokenEntryUI:(BOOL)toDisplay;
+- (void)setupTextField:(UITextField*)textField withTag:(NSInteger)tag;
+- (void)saveFailedPopup:(NSString*)reason;
 
 @end
 
@@ -33,23 +54,84 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.jpg"]];
+    
+    [self setupTextField:self.accountNameField withTag:1];
+    [self setupTextField:self.serialField withTag:2];
+    [self setupTextField:self.secretField withTag:3];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.requestTokenButton.hidden = NO;
-    self.enterTokenButton.hidden = NO;
+    [self displayTokenEntryUI:NO];
 }
+
+#pragma mark - IBActions
 
 - (IBAction)requestNewToken:(id)sender
 {
-    self.requestTokenButton.hidden = YES;
-    self.enterTokenButton.hidden = YES;
+    [self displayTokenEntryUI:YES];
 }
 
 - (IBAction)enterTokenManually:(id)sender
 {
-    self.requestTokenButton.hidden = YES;
-    self.enterTokenButton.hidden = YES;
+   [self displayTokenEntryUI:YES];
+}
+
+- (IBAction)saveToken:(id)sender
+{
+    [self saveFailedPopup:@"Saving not supported yet"];
+}
+
+- (IBAction)backGroundTap:(id)sender
+{
+    [[[self view] subviews] makeObjectsPerformSelector: @selector(resignFirstResponder)];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    UIView* nextResponder = [textField.superview viewWithTag:textField.tag+1];
+    if (nextResponder && nextResponder.hidden == NO) {
+        [nextResponder becomeFirstResponder];
+    }
+}
+
+#pragma mark - Utility functions
+
+- (void)saveFailedPopup:(NSString *)reason
+{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Save Failed"
+                                                      message:reason
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    [message show];
+}
+
+- (void)setupTextField:(UITextField*)textField withTag:(NSInteger)tag
+{
+    textField.delegate = self;
+    textField.tag = tag;
+    textField.returnKeyType = UIReturnKeyNext;
+}
+
+-(void)displayTokenEntryUI:(BOOL)toDisplay
+{
+    self.tokenLabel.hidden = toDisplay;
+    self.requestTokenButton.hidden = toDisplay;
+    self.enterTokenButton.hidden = toDisplay;
+    
+    self.serialLabel.hidden = !toDisplay;
+    self.serialField.hidden = !toDisplay;
+    self.secretLabel.hidden = !toDisplay;
+    self.secretField.hidden = !toDisplay;
+    self.saveButton.hidden = !toDisplay;
 }
 @end

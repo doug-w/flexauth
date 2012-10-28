@@ -8,12 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FlexAuthAddTokenViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *requestTokenButton;
-@property (weak, nonatomic) IBOutlet UIButton *enterTokenButton;
+@interface FlexAuthAddTokenViewController : UIViewController  <UITextFieldDelegate>
 
-
-
-- (IBAction)requestNewToken:(id)sender;
-- (IBAction)enterTokenManually:(id)sender;
 @end
