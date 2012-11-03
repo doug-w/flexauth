@@ -67,6 +67,11 @@
     return [rowData objectForKey:@"label"];
 }
 
+- (BOOL) isValidLabel:(NSString*)label
+{
+    return [self _rowForLabel:label] == nil;
+}
+
 - (NSString*) passwordForLabel:(NSString*)label
 {
     NSDictionary* rowData = [self _rowForLabel:label];

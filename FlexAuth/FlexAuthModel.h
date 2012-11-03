@@ -13,6 +13,7 @@
 @interface FlexAuthModel : NSObject
 + (FlexAuthModel*) sharedService;
 
+- (BOOL) isValidLabel:(NSString*)label;
 - (NSInteger) count;
 - (NSString*) labelAtIndex:(NSInteger)index;
 - (NSString*) passwordForLabel:(NSString*)label;

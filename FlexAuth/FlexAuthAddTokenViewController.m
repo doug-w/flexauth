@@ -79,6 +79,20 @@
 
 - (IBAction)saveToken:(id)sender
 {
+    NSString* failureMessage;
+    
+    if ([self.accountNameField.text length] == 0) {
+        failureMessage = @"Please enter an Account Name";
+    } else if ([[FlexAuthModel sharedService] isValidLabel:self.accountNameField.text] == NO) {
+        failureMessage = @"Name already used enter another";
+    } else if ([self.serialField.text length] == 0) {
+        failureMessage = @"Please enter a Serial number";
+    } else if ([self.secretField.text length] != 41) {
+        failureMessage = @"Please recheck secret code it is not valid";
+    } if (failureMessage != nil) {
+        [self saveFailedPopup:failureMessage];
+        return;
+    }
     [self saveFailedPopup:@"Saving not supported yet"];
 }
 
