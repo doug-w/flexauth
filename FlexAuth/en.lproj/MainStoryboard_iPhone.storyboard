@@ -46,14 +46,14 @@
                             <outlet property="delegate" destination="VBM-rA-fPv" id="qh0-rs-BJL"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Token" id="IEy-lQ-wOY"/>
+                    <tabBarItem key="tabBarItem" title="Token" image="key.png" id="IEy-lQ-wOY"/>
                     <connections>
                         <outlet property="timerView" destination="MHy-oV-jKZ" id="KsD-Qc-PLv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gG-V8-bwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="850" y="-716"/>
+            <point key="canvasLocation" x="1650" y="470"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xVM-Aa-54D">
@@ -68,6 +68,7 @@
                     <connections>
                         <segue destination="VBM-rA-fPv" kind="relationship" relationship="viewControllers" id="oea-de-i3D"/>
                         <segue destination="swd-Vv-nQD" kind="relationship" relationship="viewControllers" id="tQ5-TW-1JR"/>
+                        <segue destination="swd-Vv-nQD" kind="push" identifier="pushToTokenView" id="jSS-b7-cky"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5H-Nl-U9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -180,7 +181,8 @@
                             <outletCollection property="gestureRecognizers" destination="ZNC-m5-wck" appends="YES" id="Bg3-7S-Jcw"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add Token" id="k8K-Sr-qfj"/>
+                    <tabBarItem key="tabBarItem" title="Add Token" image="pencil_add.png" id="k8K-Sr-qfj"/>
+                    <navigationItem key="navigationItem" id="J95-an-kuJ"/>
                     <connections>
                         <outlet property="accountNameField" destination="Qrf-eM-yA0" id="PLH-ER-OJp"/>
                         <outlet property="enterTokenButton" destination="Pfg-Uo-G7Y" id="lZj-Ys-STR"/>
@@ -200,11 +202,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1124" y="-72"/>
+            <point key="canvasLocation" x="1258" y="-68"/>
         </scene>
     </scenes>
     <resources>
         <image name="disk.png" width="16" height="16"/>
+        <image name="key.png" width="16" height="16"/>
         <image name="pencil_add.png" width="16" height="16"/>
         <image name="world_link.png" width="16" height="16"/>
     </resources>
@@ -239,4 +242,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="jSS-b7-cky"/>
+    </inferredMetricsTieBreakers>
 </document>

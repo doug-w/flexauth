@@ -35,22 +35,19 @@
 
 - (id) init
 {
-    self.userDefaults = [NSUserDefaults standardUserDefaults];
-
-    _tokenRows = [self.userDefaults objectForKey:@"rows"];
+    self = [super init];
     
-    if([_tokenRows count] == 0)
-    {
-        // TODO: DJW oblit this in git history
-        NSDictionary *defaultRow = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    @"Hi", @"label",
-                                    @"f46a0ab66c12e7030de53a0497b954dc8b9f25d9", @"secret",
-                                    nil
-                                    ];
-        [self.userDefaults setObject:[NSArray arrayWithObject:defaultRow]
-                              forKey:@"rows"];
-        [self.userDefaults synchronize];
+    if (self) {
+        self.userDefaults = [NSUserDefaults standardUserDefaults];
+        
         _tokenRows = [self.userDefaults objectForKey:@"rows"];
+        
+        if([_tokenRows count] == 0)
+        {
+            [self addToken:@"Hi"
+                withSerial:@"US-FakeSerial"
+                withSecret:@"f46a0ab66c12e7030de53a0497b954dc8b9f25d9"];
+        }
     }
     
     return self;
@@ -118,5 +115,29 @@
         }
     }
     return nil;
+}
+
+- (void) addToken:(NSString*)label
+       withSerial:(NSString*)serial
+       withSecret:(NSString*)secret
+{
+    NSDictionary *newRow = [NSDictionary dictionaryWithObjectsAndKeys:
+                                label, @"label",
+                                secret, @"secret",
+                                serial, @"serial",
+                                nil
+                                ];
+    NSMutableArray* rows = [NSMutableArray arrayWithObject:newRow];
+    [rows addObjectsFromArray:self.tokenRows];
+    
+    
+    [self.userDefaults setObject:rows
+                          forKey:@"rows"];
+    [self.userDefaults synchronize];
+    
+    self.tokenRows = rows;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFAMModelDidChangeNotification
+                                                        object:nil];
 }
 @end

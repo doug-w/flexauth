@@ -18,4 +18,5 @@
 - (NSString*) labelAtIndex:(NSInteger)index;
 - (NSString*) passwordForLabel:(NSString*)label;
 
+- (void) addToken:(NSString*)label withSerial:(NSString*)serial withSecret:(NSString*)secret;
 @end
