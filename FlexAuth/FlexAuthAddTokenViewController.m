@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *secretField;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
+@property (weak, nonatomic) UIActivityIndicatorView* networkActivity;
+
 - (IBAction)requestNewToken:(id)sender;
 - (IBAction)enterTokenManually:(id)sender;
 - (IBAction)saveToken:(id)sender;
@@ -39,7 +41,8 @@
 {
     self = [super init];
     if (self) {
-        // Custom initialization
+        self.networkActivity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.networkActivity.hidesWhenStopped = TRUE;
     }
     return self;
 }
@@ -58,6 +61,7 @@
     [self setupTextField:self.accountNameField withTag:1];
     [self setupTextField:self.serialField withTag:2];
     [self setupTextField:self.secretField withTag:3];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -65,11 +69,25 @@
     [self displayTokenEntryUI:NO];
 }
 
+#define kFAMUSEnrollURL @"http://m.us.mobileservice.blizzard.com/enrollment/enroll.htm"
+
+- (void)retrieveNewToken:(NSString*)region
+{
+    if([region isEqualToString:@"US"]) {
+        NSData* tokenData = [NSData dataWithContentsOfURL:[NSURL URLWithString:kFAMUSEnrollURL]];
+
+    }
+    [self.networkActivity stopAnimating];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)requestNewToken:(id)sender
 {
-    [self displayTokenEntryUI:YES];
+    [self.networkActivity startAnimating];
+    [self performSelectorInBackground:@selector(retrieveNewToken) withObject:@"US"];
+    
+    //[self displayTokenEntryUI:YES];
 }
 
 - (IBAction)enterTokenManually:(id)sender
